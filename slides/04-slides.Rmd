@@ -602,23 +602,24 @@ ggplot(gapminder_continents,
 
 .box-inv-3[Show the individual observations as squares]
 
-.left-code[
+.left-code.small-code[
 
 ```{r waffle, fig.show="hide", tidy=FALSE, message=FALSE, fig.dim=c(4.8, 3.5), out.width="100%"}
-# This has to be installed in a special way--you can't use the Packages panel. 
-# Run this in your console:
-# devtools::install_github("hrbrmstr/waffle")
-library(waffle)
+# devtools::install_github("liamgilbey/ggwaffle")
+library(ggwaffle)
 
-ggplot(gapminder_continents,
-       aes(x = continent, y = n, 
-           fill = continent)) +
-  geom_waffle(aes(values = n),  # geom_waffle() needs a special values aesthetic
-              n_rows = 9,  # It has lots of other options too
-              flip = TRUE, na.rm = TRUE) +
+# The data needs to be reshaped a bit first
+gapminder |>
+  filter(year == 2007) |>
+  waffle_iron(aes_d(group = continent), rows = 9) |>
+  ggplot(
+    # x and y are switched here so the boxes go rowwise
+    aes(x = y, y = -x, fill = group)
+  ) +
+  geom_waffle(linewidth = 0.25) +
   labs(fill = NULL) +
-  coord_equal() +  # Make all the squares square
-  theme_void()  # Use a completely empty theme
+  coord_equal() + # Make all the squares square
+  theme_void() # Use a completely empty theme
 ```
 
 ]

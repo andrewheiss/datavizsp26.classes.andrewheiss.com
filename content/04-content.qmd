@@ -35,6 +35,13 @@ Specific plot types:
 - {{< fa arrow-up-right-from-square >}} [Understanding Pie Charts](https://eagereyes.org/techniques/pie-charts)
 - {{< fa brands youtube >}} [Video from the *Financial Times* about the design decisions behind their COVID-19 tracking charts](https://www.youtube.com/watch?v=4lm3MWTVAK0)
 
+::: {.callout-important}
+#### Waffle plots
+
+The original [{waffle}](https://github.com/hrbrmstr/waffle) package has been retired and its successor is called [{ggwaffle}](https://liamgilbey.github.io/ggwaffle/). It works similarly—[check its documentation for examples](https://liamgilbey.github.io/ggwaffle/) of how to use it.
+:::
+
+
 
 ## Slides
 
